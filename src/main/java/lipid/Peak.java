@@ -35,4 +35,10 @@ public class Peak {
         Peak other = (Peak) obj;
         return Double.compare(mz, other.mz) == 0;
     }
+
+    /*
+    @Override
+    public int compareTo(Peak other) {
+        return -Double.compare(other.mz, mz);
+    }*/
 }

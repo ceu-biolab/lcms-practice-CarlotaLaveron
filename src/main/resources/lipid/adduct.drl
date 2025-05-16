@@ -1,0 +1,19 @@
+package lipid;
+unit AnnotationUnit;
+import adduct.AdductList;
+import adduct.Adduct
+import java.util.concurrent.atomic.AtomicReference
+import java.util.HashSet;
+
+rule "identify adduct"
+when
+    $a :/ annotations [$mz : mz, $ion : ionization, $group : groupedSignals]
+then
+    String finalAdduct = $a.identifyAdduct();
+    modify ($a) {setAdduct(finalAdduct)}
+    annotations.add($a);
+end
+
+query FindMadeAnnotation
+    $a : /annotations[ adduct != null]
+end
